@@ -69,6 +69,13 @@ if [[ `uname` =~ "Darwin" ]]; then
   ssh-add --apple-use-keychain ~/.ssh/id_ed25519
 fi
 
+# Install Claude Code plugins
+if command -v claude >/dev/null 2>&1; then
+  echo "-----> Installing Claude Code plugin 'superpowers'..."
+  claude plugin marketplace add anthropics/claude-plugins-official
+  claude plugin install superpowers@claude-plugins-official
+fi
+
 # Refresh the current terminal with the newly installed configuration
 exec zsh
 
